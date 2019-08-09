@@ -11,7 +11,7 @@ class Solution:
       # get value in both linked list
       result = self.retrive_values(l1) + self.retrive_values(l2)
       return self.generate_linked_list(result)
-    
+
     def retrive_values(self, l_list):
       """to retrive value or numbers in the linked list"""
       copy_list = l_list
