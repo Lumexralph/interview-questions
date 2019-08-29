@@ -4,6 +4,62 @@ class Node(object):
       self.val = val
       self.next = None
 
+
+
+# Solution 1
+class Solution:
+    def addTwoNumbers(self, l1: Node, l2: Node) -> Node:
+        dummy_head: Node = Node(0)
+        p: Node = l1
+        q: Node = l2
+        current: Node = dummy_head
+        carry: int = 0
+
+        while (p != None or q != None):
+            x: int = p.val if p != None else 0
+            y: int = q.val if q != None else 0
+
+            add: int = carry + x + y
+            carry = add // 10
+
+            current.next = Node(add % 10)
+            current = current.next
+
+            if p != None: p = p.next
+            if q != None: q = q.next
+
+        if carry > 0: current.next = Node(carry)
+
+        return dummy_head.next
+
+# ==========================================================================
+# Solution 2
+# ==========================================================================
+class Solution:
+    def addTwoNumbers(self, l1, l2 ,c = 0):
+        """
+        :type l1: Node
+        :type l2: Node
+        :rtype: Node
+        """
+        val = l1.val + l2.val + c
+        c = val // 10
+        ret = Node(val % 10 ) 
+        
+        if (l1.next != None or l2.next != None or c != 0):
+            if l1.next == None:
+                l1.next = Node(0)
+            if l2.next == None:
+                l2.next = Node(0)
+            ret.next = self.addTwoNumbers(l1.next,l2.next,c)
+        return ret
+
+
+# ==========================================================================
+# Solution 3
+# ==========================================================================
+
+
   #  I can create a LinkedList class that keeps track of
   # the head, tail
 class Solution:
