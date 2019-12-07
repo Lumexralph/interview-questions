@@ -1,4 +1,4 @@
-from solution_3 import Solution
+from .solution import Solution
 
 class TestValidExpressionSolution:
     def test_invalid_expression(self):

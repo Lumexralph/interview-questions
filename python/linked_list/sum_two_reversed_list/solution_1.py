@@ -35,7 +35,7 @@ class Solution:
 # ==========================================================================
 # Solution 2
 # ==========================================================================
-class Solution:
+class SolutionB:
     def addTwoNumbers(self, l1, l2 ,c = 0):
         """
         :type l1: Node
@@ -44,8 +44,8 @@ class Solution:
         """
         val = l1.val + l2.val + c
         c = val // 10
-        ret = Node(val % 10 ) 
-        
+        ret = Node(val % 10 )
+
         if (l1.next != None or l2.next != None or c != 0):
             if l1.next == None:
                 l1.next = Node(0)
@@ -62,7 +62,7 @@ class Solution:
 
   #  I can create a LinkedList class that keeps track of
   # the head, tail
-class Solution:
+class SolutionC:
     def addTwoNumbers(self, l1, l2, c = 0):
       # get value in both linked list
       result = self.retrive_values(l1) + self.retrive_values(l2)
@@ -101,8 +101,8 @@ class Solution:
 
       return head_node
 
-l1 = Solution().generate_linked_list(112)
-l2 = Solution().generate_linked_list(345)
+l1 = SolutionC().generate_linked_list(112)
+l2 = SolutionC().generate_linked_list(345)
 result = Solution().addTwoNumbers(l1, l2)
 
 while result:
