@@ -1,9 +1,8 @@
-// package main has the solution for the minimum window
+// Package solution has the solution for the minimum window
 // algorithm implementation using the sliding window technique.
-package main
+package solution
 
 import (
-	"fmt"
 	"math"
 	"strings"
 )
@@ -15,32 +14,32 @@ func minWindow(mainStr, subStr string) string {
 	}
 	// using the sliding window technique.
 	// create hashmap for required and desired character.
-	required := make(map[string]int)
-	desired := make(map[string]int)
+	required := make(map[rune]int)
+	desired := make(map[rune]int)
 	// ensure it is the count of the unique keys in desired
 	// and not the subStr incase of repeated characters.
 	substrCount := 0
 
 	// populate the desired and required hashmaps
 	for _, char := range subStr {
-		desired[string(char)] = 0
+		desired[char] = 0
 
 		// create the new hashmap with the count of the required
 		// characters in the subStr.
-		if _, ok := required[string(char)]; !ok {
+		if _, ok := required[char]; !ok {
 			// if the character has not been accounted of.
 			substrCount++ // count the unique characters
-			required[string(char)] = strings.Count(subStr, string(char))
+			required[char] = strings.Count(subStr, string(char))
 		}
 	}
 
-	var slowPointer, fastPointer uint64
+	var slowPointer, fastPointer int
 	minWindowRange := []uint64{0, math.MaxUint64}
 
 	// enlarge the window to get the desirable character range
-	for fastPointer < uint64(len(mainStr)) {
+	for fastPointer < len(mainStr) {
 		// check if there is range match
-		char := string(mainStr[fastPointer])
+		char := rune(mainStr[fastPointer])
 
 		if _, ok := desired[char]; ok {
 			desired[char]++
@@ -63,23 +62,20 @@ func minWindow(mainStr, subStr string) string {
 			// make a check for the smallest or shortest substring window.
 			if uint64(fastPointer-slowPointer) < (minWindowRange[1] - minWindowRange[0]) {
 				// update the shortest window
-				minWindowRange[0] = slowPointer
-				minWindowRange[1] = fastPointer
+				minWindowRange[0] = uint64(slowPointer)
+				minWindowRange[1] = uint64(fastPointer)
 			}
 
 			// we need to check when there is match in the character
 			// pointed by the slowPointer, then decrement the value by 1.
-			char := string(mainStr[slowPointer])
+			char := rune(mainStr[slowPointer])
 
 			if _, ok := desired[char]; ok {
 				desired[char]--
 
 				// if the count of desired is less than the count of required
 				// means a required character is misssing
-				desiredValue := desired[char]
-				requiredValue := required[char]
-
-				if desiredValue < requiredValue {
+				if desired[char] < required[char] {
 					substrCount++
 				}
 			}
@@ -94,8 +90,4 @@ func minWindow(mainStr, subStr string) string {
 		return ""
 	}
 	return mainStr[minWindowRange[0]:minWindowRange[1]]
-}
-
-func main() {
-	fmt.Println(minWindow("ADOBECODEBANC", ""))
 }

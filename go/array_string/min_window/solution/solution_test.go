@@ -1,4 +1,4 @@
-package main
+package solution
 
 import "testing"
 
@@ -10,7 +10,7 @@ func TestMinWindow(t *testing.T) {
 		{"minimum substring with unique character", "ADOBECODEBANC", "ABC", "BANC"},
 		{"use string input without match", "a", "b", ""},
 		{"use empty string inputs", "", "", ""},
-		{"give length of substring less than main string", "ABC", "ADOBECODEBANC", ""},
+		{"give length of substring less than main string", "ABCD", "ADOBECODEBANC", ""},
 	}
 
 	for _, tc := range cases {
@@ -18,7 +18,7 @@ func TestMinWindow(t *testing.T) {
 			got := minWindow(tc.mainString, tc.substring)
 
 			if got != tc.want {
-				t.Errorf("minWindow(%s, %s) got %v; want %s.", tc.mainString, tc.substring, got, tc.want)
+				t.Errorf("minWindow(%q, %q) got %q; want %q.", tc.mainString, tc.substring, got, tc.want)
 			}
 		})
 	}
