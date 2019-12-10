@@ -1,9 +1,9 @@
-// Package solution contains the implementation of
+// Package twosum contains the implementation of
 // the two sum algorithm solution with O(n) complexity
 // and also an amortized O(1) complexity.
-package solution
+package twosum
 
-func twoSum(nums []int, target int) []int {
+func searchIndex(nums []int, target int) []int {
 	// we need to keep a record of element visited
 	// and their index, to avoid iterating the nums
 	// array multiple times so as to find a match with target
@@ -19,5 +19,5 @@ func twoSum(nums []int, target int) []int {
 		visited[num] = i
 	}
 
-	return []int{}
+	return nil
 }
