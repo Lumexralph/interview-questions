@@ -1,3 +1,6 @@
+# Assumptions made, there will be repeated characters
+# whitespace counts in permutation
+# It is case sensitive
 class Solution:
     def check_permutation(self, data_A: str, data_B: str) -> bool:
         # validations
@@ -35,4 +38,4 @@ class Solution:
         return "".join(formed_data) == data_A
 
 
-print(Solution().check_permutation("abgcdeg", "edcbagg"))
+print(Solution().check_permutation("aAbgcdeg", "edcbagg"))

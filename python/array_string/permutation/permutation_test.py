@@ -17,7 +17,7 @@ class TestCheckPermutation(TestCase):
         self.assertFalse(result)
 
     def test_string_with_same_length_different_characters(self):
-        result = Solution().check_permutation("abcdef", "gedcba")
+        result = Solution().check_permutation("abcdef", "ged cba")
         self.assertFalse(result)
 
     def test_with_list_and_object(self):
