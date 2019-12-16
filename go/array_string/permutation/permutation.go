@@ -16,14 +16,10 @@ func checkPermutation(inputA, inputB string) bool {
 
 	for _, char := range inputB {
 
-		if _, ok := inputACharSet[char]; ok {
-			if inputACharSet[char] == 0 {
-				return false
-			}
-			inputACharSet[char]--
-		} else {
+		if inputACharSet[char] == 0 {
 			return false
 		}
+		inputACharSet[char]--
 	}
 	return true
 }
