@@ -30,4 +30,4 @@ If there is such window, you are guaranteed that there will always be only one u
 
 ## Run tests
 
-    python3 -m unittest -v  minimum_window.solution_test
+    go test solution_test.go
