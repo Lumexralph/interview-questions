@@ -10,8 +10,8 @@ func maxProfit(prices []int) int {
 	for _, price := range prices {
 		if price < buyPrice {
 			buyPrice = price
-		} else if price-buyPrice > profit {
-			profit = price - buyPrice
+		} else if p := price - buyPrice; p > profit {
+			profit = p
 		}
 	}
 
