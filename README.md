@@ -7,6 +7,7 @@ To get better at problem-solving, this will be my attempt solving industry stand
 - Python
 - Rust
 - Go
+- TypeScript/JavaScript
 
 I will further improve on my solutions by analysing the time complexity (Big - O Notation) and also the space complexity as much as I can.
 
